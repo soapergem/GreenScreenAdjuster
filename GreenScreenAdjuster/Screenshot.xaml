@@ -1,0 +1,15 @@
+﻿<Window x:Class="GreenScreenAdjuster.Screenshot"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GreenScreenAdjuster"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Title="Screenshot" Height="450" Width="800">
+    <Grid>
+        <Canvas Name="MainCanvas" MouseDown="Canvas_MouseDown" MouseUp="Canvas_MouseUp" MouseMove="Canvas_MouseMove" 
+                TouchDown="Canvas_TouchDown" TouchUp="Canvas_TouchUp" TouchMove="Canvas_TouchMove"
+                Grid.Column="0" Grid.Row="0" IsEnabled="True" Background="#CC000000" Visibility="Hidden" />
+    </Grid>
+</Window>
