@@ -48,9 +48,4 @@ namespace GreenScreenAdjuster
         public int X;
         public int Y;
     }
-
-    public class ApiConstants
-    {
-        public const int SRCCOPY = 13369376;
-    }
 }

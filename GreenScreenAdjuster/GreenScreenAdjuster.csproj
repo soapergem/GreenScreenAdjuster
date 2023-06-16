@@ -88,10 +88,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ApiConstants.cs" />
-    <Compile Include="ControlExtensions.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
-    <Compile Include="ImgUtils.cs" />
     <Compile Include="Screenshot.xaml.cs">
       <DependentUpon>Screenshot.xaml</DependentUpon>
     </Compile>
@@ -106,7 +104,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Color.cs" />
-    <Compile Include="Gdi32.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

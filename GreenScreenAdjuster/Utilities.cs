@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using GreenScreenAdjuster.Extensions;
 
 namespace GreenScreenAdjuster
 {
     public static class Utilities
     {
-        public static Image CaptureScreen()
-        {
-            return CaptureWindow(User32.GetDesktopWindow());
-        }
-
         public static Dictionary<IntPtr, string> GetOpenWindows()
         {
             var windowHandles = GetOpenWindowHandles();
@@ -57,30 +54,30 @@ namespace GreenScreenAdjuster
             User32.GetWindowText(windowHandle, titleBuilder, maxLength);
             return titleBuilder.ToString();
         }
-
-        public static Image CaptureWindow(IntPtr handle)
+        public static string GetAverageColor(Bitmap image)
         {
-            IntPtr hdcSrc = User32.GetWindowDC(handle);
+            var reds = new List<int>();
+            var greens = new List<int>();
+            var blues = new List<int>();
 
-            var windowRect = new Rect();
-            User32.GetWindowRect(handle, ref windowRect);
+            for (var i = 0; i < image.Width; i++)
+            {
+                for (var j = 0; j < image.Height; j++)
+                {
+                    System.Drawing.Color color = image.GetPixel(i, j);
+                    reds.Add(color.R);
+                    greens.Add(color.G);
+                    blues.Add(color.B);
+                }
+            }
 
-            int width = windowRect.Right - windowRect.Left;
-            int height = windowRect.Bottom - windowRect.Top;
+            var combined = System.Drawing.Color.FromArgb(
+                (int)reds.Average(),
+                (int)greens.Average(),
+                (int)blues.Average()
+            );
 
-            IntPtr hdcDest = Gdi32.CreateCompatibleDC(hdcSrc);
-            IntPtr hBitmap = Gdi32.CreateCompatibleBitmap(hdcSrc, width, height);
-
-            IntPtr hOld = Gdi32.SelectObject(hdcDest, hBitmap);
-            Gdi32.BitBlt(hdcDest, 0, 0, width, height, hdcSrc, 0, 0, ApiConstants.SRCCOPY);
-            Gdi32.SelectObject(hdcDest, hOld);
-            Gdi32.DeleteDC(hdcDest);
-            User32.ReleaseDC(handle, hdcSrc);
-
-            Image image = Image.FromHbitmap(hBitmap);
-            Gdi32.DeleteObject(hBitmap);
-
-            return image;
+            return combined.HexConverter();
         }
     }
 }

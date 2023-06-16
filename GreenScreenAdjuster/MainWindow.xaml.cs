@@ -191,7 +191,6 @@ namespace GreenScreenAdjuster
                 StoredColor = Color.FromHexCode(hexColor);
                 Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    Activate(); // TODO: comment me out
                     ActionButton.Content = "Stop";
                     HexColor.Content = hexColor;
                     ColorRect.Fill = (System.Windows.Media.Brush)brushConverter.ConvertFromString("#" + hexColor);
@@ -232,7 +231,7 @@ namespace GreenScreenAdjuster
                     graphics.CopyFromScreen(screenBounds.X, screenBounds.Y, 0, 0, screenBounds.Size);
                 }
 
-                var hexColor = ImgUtils.GetAverageColor(bitmap);
+                var hexColor = Utilities.GetAverageColor(bitmap);
                 return hexColor;
             }
         }
