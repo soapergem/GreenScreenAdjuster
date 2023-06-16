@@ -5,12 +5,12 @@ A WPF app to automate the Chroma Key filter settings in OBS.
 ## Problem Statement
 
 I am a Twitch streamer who uses [OBS](https://github.com/obsproject/obs-studio) to broadcast my stream.
-I utilize a green screen and I use the Chroma Key filter in OBS to remove the green background. Many
-streamers understand that good, consistent lighting is an important part of setting up a green screen
-successfully, to ensure that the shade of green remains consistent. This often involves placing a ring
-light in front of your face. However, I do not like staring into bright lights for hours at a time,
-and strongly prefer natural light. So I stream from a room with large windows to take advantage of
-the natural sunlight.
+I utilize a green screen and I use the [Chroma Key filter](https://obsproject.com/kb/chroma-key-filter)
+in OBS to remove the green background. Many streamers understand that good, consistent lighting is an
+important part of setting up a green screen successfully, to ensure that the shade of green remains
+consistent. This often involves placing a ring light in front of your face. However, I do not like
+staring into bright lights for hours at a time, and strongly prefer natural light. So I stream from
+a room with large windows to take advantage of the natural sunlight.
 
 The problem with this is that the sun does not provide consistent lighting, and as a result the
 specific shade of green (as perceived by my webcam) has the potential of changing each time I start
