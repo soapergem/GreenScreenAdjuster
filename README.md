@@ -54,3 +54,17 @@ kind of webcam or otherwise are bringing your webcam directly into OBS without a
 intermediate program like Logi Capture, this application will not work well. The
 reason is because the video will show up in OBS with filters already applied, and
 thus you will not be able to screen capture the original green colors.
+
+## Contributing
+
+Not sure if you need to do this or if it's automatic, but I ran the following
+commands to exclude the default system properties from further changes:
+
+```bash
+git update-index --skip-worktree GreenScreenAdjuster/App.config
+git update-index --skip-worktree GreenScreenAdjuster/Properties/Settings.Designer.cs
+git update-index --skip-worktree GreenScreenAdjuster/Properties/Settings.settings
+```
+
+The reason for this is because the application saves your OBS connect password to
+its own properties, and you really don't want to check that into the VCS.
