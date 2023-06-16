@@ -26,7 +26,7 @@ namespace GreenScreenAdjuster
         {
             InitializeComponent();
             brushConverter = new BrushConverter();
-            timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(5), IsEnabled = false};
+            timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(90), IsEnabled = false};
             timer.Tick += Timer_Tick;
             obs = new OBSWebsocket();
             obs.Connected += OnConnected;
